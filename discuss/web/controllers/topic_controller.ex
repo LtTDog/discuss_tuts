@@ -64,7 +64,7 @@ defmodule Discuss.TopicController do
     def check_topic_owner(conn, _params) do
         %{params: %{"id" => topic_id}} = conn
 
-        if Repo.get(Topic, topic_id).user_id == conn.assigns.user.id do
+        if Repo.get!(Topic, topic_id).user_id == conn.assigns.user.id do
             conn
         else
             conn
